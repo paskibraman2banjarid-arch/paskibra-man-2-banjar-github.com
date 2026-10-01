@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokasi - Paskibra MAN 2 Banjar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: #fcfcfc;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .header-logo-container {
+            height: 40px;
+            width: auto;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header-logo-container img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .menu-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0c2b5e;
+        }
+
+        /* Dropdown Menu */
+        .mobile-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #0c2b5e;
+            font-weight: 600;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* --- MAIN CONTENT & TYPOGRAPHY --- */
+        main {
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge-title {
+            background-color: #eff6ff;
+            color: #2b6cb0;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        h1.page-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0c2b5e;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p.page-subtitle {
+            font-size: 13px;
+            color: #64748b;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* --- CARDS COMPONENT --- */
+        .card {
+            background: #ffffff;
+            width: 100%;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 12px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .icon-blue { background-color: #eff6ff; color: #2b6cb0; }
+        .icon-dark-blue { background-color: #f1f5f9; color: #0c2b5e; }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0c2b5e;
+        }
+
+        /* --- LOKASI / GOOGLE MAPS SECTION --- */
+        .address-box {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 3px solid #2b6cb0;
+        }
+
+        .address-box p {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .map-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            /* Membuat wadah responsif untuk iFrame */
+            position: relative;
+            padding-bottom: 75%; /* Rasio aspek untuk map */
+            height: 0;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .btn-maps {
+            background-color: #2b6cb0;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 15px;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .btn-maps:hover {
+            background-color: #1e4a8a;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-logo-container">
+                
+                <img src="LAMBANG PASKIBRA MAN 2 BANJAR.png" alt="Logo Paskibra">
+            </div>
+            <button class="menu-btn" id="menuToggle">☰</button>
+        </header>
+
+        <!-- MENU NAVIGASI -->
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Beranda</a>
+            <a href="tentang.html">Tentang kami</a>
+            <a href="Kontak.lokasi.html">Kontak & lokasi</a>
+            <a href="lain nya.html">Info paskibra</a>
+        </nav>
+
+        <!-- KONTEN UTAMA -->
+        <main>
+            <div class="badge-title">Hubungi Kami</div>
+            <h1 class="page-title">Lokasi Sekretariat</h1>
+            <p class="page-subtitle">Lokasi Paskibra MAN 2 Banjar.</p>
+
+            <!-- KARTU LOKASI -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-dark-blue">📍</div>
+                    <div class="card-title">Denah Lokasi</div>
+                </div>
+                
+                <!-- ALAMAT SUDAH DIPERBAIKI KE KALIMANTAN SELATAN -->
+                <div class="address-box">
+                    <p><strong>MAN 2 Banjar</strong><br>
+                    Jl. Ahmad Yani Km. 48, Astambul Seberang, Kec. Astambul, Kab. Banjar, Kalimantan Selatan</p>
+                </div>
+
+                <!-- GOOGLE MAPS EMBED - MENGARAH KE KAL-SEL -->
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=MAN%202%20Banjar,%20Astambul,%20Kalimantan%20Selatan&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <!-- Tombol Buka di Aplikasi Google Maps (Link Asli yang Anda Kirim) -->
+                <a href="https://maps.app.goo.gl/U89jihWpXePpmwmZ6?g_st=ac" target="_blank" class="btn-maps">
+                    🗺️ Buka di Aplikasi Google Maps
+                </a>
+
+            </div>
+
+            <!-- KARTU KONTAK -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-blue">📞</div>
+                    <div class="card-title">Kontak Kami</div>
+                </div>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; text-align: center; font-style: italic;"> gmail: paskibraman2banjar.id@gmail.com
+                </p>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- SCRIPT UNTUK MENU HAMBURGER -->
+    <script>
+        const menuBtn = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                menuBtn.innerHTML = '✕'; 
+            } else {
+                menuBtn.innerHTML = '☰'; 
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Paskibra - MAN 2 Banjar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 480px; 
+            background-color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 40%, rgba(240, 244, 248, 0.8) 0%, rgba(255, 255, 255, 1) 70%);
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: white;
+            border-bottom: 1px solid #f1f5f9;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo-container {
+            height: 40px; 
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-logo-container img {
+            height: 100%; 
+            object-fit: contain; 
+        }
+        
+        .menu-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0c2b5e;
+        }
+
+        .mobile-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #0c2b5e;
+            font-weight: 600;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            padding: 30px 20px 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-title {
+            color: #0c2b5e;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Desain Kotak Info */
+        .info-card {
+            background: white;
+            width: 100%;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            border-left: 5px solid #0c2b5e;
+            text-align: left;
+        }
+
+        .info-card h3 {
+            color: #0c2b5e;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Styling untuk Tata Tertib (List Angka) */
+        .tatib-list {
+            padding-left: 18px;
+        }
+
+        .tatib-list li {
+            color: #64748b;
+            font-size: 13.5px;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .tatib-list li strong {
+            color: #0c2b5e;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* Styling Khusus Jargon */
+        .jargon-box {
+            text-align: center;
+        }
+
+        .jargon-box p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .jargon-highlight {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2b6cb0;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .jargon-final {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0c2b5e;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Watermark / Tanda Pembuat Web */
+        .web-credit {
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 10px;
+            padding-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .web-credit span {
+            color: #0c2b5e;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-logo-container">
+                <img src="LAMBANG PASKIBRA MAN 2 BANJAR.png" alt="Logo">
+            </div>
+            <button class="menu-btn" id="menuToggle">☰</button>
+        </header>
+
+        <!-- MENU NAVIGASI -->
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Beranda</a>
+            <a href="tentang.html">Tentang Kami</a>
+            <a href="kontak.lokasi.html">Kontak & Lokasi</a>
+            <a href="info.html">Info Paskibra</a>
+        </nav>
+
+        <!-- KONTEN UTAMA -->
+        <main>
+            <h1 class="page-title">Pusat Informasi</h1>
+
+            <!-- TATA TERTIB -->
+            <div class="info-card">
+                <h3>⚖️ Tata Tertib Pasmanduba</h3>
+                <ol class="tatib-list">
+                    <li>
+                        <strong>Pencopotan Atribut bagi Anggota Tidak Aktif/Keluar</strong>
+                        Setiap individu yang sudah tidak lagi aktif mengikuti latihan rutin atau resmi mengundurkan diri dari ekstrakurikuler Paskibra MAN 2 Banjar dilarang keras mengenakan atribut, lambang, atau seragam yang menjadi identitas Paskibra MAN 2 Banjar di lingkungan sekolah maupun di luar sekolah.
+                    </li>
+                    <li>
+                        <strong>Kedisiplinan Kehadiran</strong>
+                        Anggota wajib hadir di lapangan 15 menit sebelum latihan dimulai. Keterlambatan tanpa keterangan yang jelas akan dikenakan sanksi mendidik sesuai kesepakatan bersama.
+                    </li>
+                    <li>
+                        <strong>Kerapian Atribut dan Pakaian Latihan</strong>
+                        Anggota wajib mengenakan pakaian latihan yang bersih, rapi, dan sesuai dengan ketentuan atribut organisasi yang berlaku setiap kali sesi latihan berlangsung.
+                    </li>
+                    <li>
+                        <strong>Menjaga Etika dan Nama Baik Sekolah</strong>
+                        Setiap anggota wajib menjaga sikap, sopan santun, serta marwah dan nama baik Paskibra MAN 2 Banjar maupun almamater sekolah, baik saat berada di dalam lingkungan sekolah maupun di kehidupan sehari-hari (masyarakat/sosial media).
+                    </li>
+                    <li>
+                        <strong>Kewajiban Meminta Izin</strong>
+                        Anggota yang berhalangan hadir karena sakit, keperluan keluarga, atau izin penting lainnya wajib memberikan surat izin atau mengonfirmasi secara langsung kepada pelatih atau pengurus inti sebelum latihan dimulai.
+                    </li>
+                </ol>
+            </div>
+
+            <!-- JARGON PASKIBRA -->
+            <div class="info-card jargon-box">
+                <h3> Jargon Paskibra</h3>
+                <p><strong></strong></p>
+                <p class="jargon-highlight">
+                    Basatu dalam langkah,<br>
+                    Batunggal dalam tekad,<br>
+                    Bakti sampai tuntung.
+                </p>
+              
+            </div>
+
+                        <!-- TANDA PEMBUAT WEB -->
+            <div class="web-credit">
+                &copy; 2026 <span>Paskibra MAN 2 Banjar</span>. All Rights Reserved.
+            </div>
+
+
+    <!-- SCRIPT MENU HAMBURGER -->
+    <script>
+        const menuBtn = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                menuBtn.innerHTML = '✕';
+            } else {
+                menuBtn.innerHTML = '☰';
+            }
+        });
+    </script>
+</body>
+</html>

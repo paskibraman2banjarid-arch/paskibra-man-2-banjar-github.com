@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Paskibra MAN 2 Banjar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: #fcfcfc;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* Container Logo Navbar mengikuti nuansa Halaman 1 */
+                /* Container untuk Logo di Navbar */
+        .header-logo-container {
+            height: 40px; /* Hanya tentukan tinggi */
+            width: auto; /* Biarkan lebar menyesuaikan gambar */
+            background-color: transparent; /* Hilangkan background warna */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header-logo-container img {
+            height: 100%; /* Tinggi gambar mengikuti wadahnya */
+            width: auto; /* Lebar menyesuaikan otomatis agar proporsional */
+            object-fit: contain; /* Memastikan gambar tidak terpotong */
+            display: block; /* Mencegah jarak kosong di bawah gambar */
+        }
+
+
+        .menu-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0c2b5e;
+        }
+
+        /* Dropdown Menu */
+        .mobile-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #0c2b5e;
+            font-weight: 600;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* --- MAIN CONTENT & TYPOGRAPHY --- */
+        main {
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Nuansa Biru pada Badge */
+        .badge-title {
+            background-color: #eff6ff;
+            color: #2b6cb0;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        h1.page-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0c2b5e; /* Biru Gelap dari Halaman 1 */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p.page-subtitle {
+            font-size: 13px;
+            color: #64748b;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* --- CARDS COMPONENT --- */
+        .card {
+            background: #ffffff;
+            width: 100%;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* Semua Icon berwarna Biru */
+        .icon-blue { background-color: #eff6ff; color: #2b6cb0; }
+        .icon-dark-blue { background-color: #f1f5f9; color: #0c2b5e; }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0c2b5e;
+        }
+
+        /* Styling Visi - Menjadikan teks visi menonjol */
+        .visi-text {
+            font-size: 14px;
+            color: #1e293b;
+            line-height: 1.6;
+            font-weight: 600;
+            font-style: italic;
+            text-align: center;
+            padding: 10px;
+            border-left: 3px solid #2b6cb0;
+            background-color: #f8fafc;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Styling List Misi (Angka) */
+        ol.misi-list {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        ol.misi-list li {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 5px;
+        }
+        
+        /* Mengubah warna angka list menjadi biru */
+        ol.misi-list li::marker {
+            color: #2b6cb0;
+            font-weight: 700;
+        }
+
+        /* --- SEJARAH LAMBANG SECTION --- */
+        .section-heading {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0c2b5e;
+            margin: 20px 0 15px 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        .logo-comparison {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 40%;
+        }
+
+        .logo-box {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 10px;
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 600;
+            text-align: center;
+            overflow: hidden;
+            border: 2px dashed #cbd5e1;
+        }
+        
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #334155;
+            text-align: center;
+        }
+
+        .logo-arrow {
+            color: #2b6cb0;
+            font-size: 20px;
+        }
+
+        .filosofi-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0c2b5e;
+            margin-bottom: 8px;
+        }
+
+        .filosofi-text {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .detail-list {
+            margin-top: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 5px;
+        }
+        
+        .detail-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .detail-value {
+            color: #0c2b5e;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Utilitas Teks Kosong */
+        .text-empty {
+            text-align: center !important;
+            font-style: italic;
+            color: #94a3b8 !important;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-logo-container">
+                <img src="LAMBANG PASKIBRA MAN 2 BANJAR.png" alt="Logo">
+            </div>
+            <button class="menu-btn" id="menuToggle">☰</button>
+        </header>
+
+        <!-- MENU NAVIGASI -->
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Beranda</a>
+            <a href="tentang.html">Tentang Kami</a>
+            <a href="kontak.lokasi.html">Kontak & lokasi</a>
+            <a href="lain nya.html">Info paskibra</a>
+        </nav>
+
+        <!-- KONTEN UTAMA -->
+        <main>
+            <div class="badge-title">Tentang Kami</div>
+            <h1 class="page-title">Paskibra MAN 2 Banjar</h1>
+            <p class="page-subtitle">Mengenal lebih dekat organisasi yang membina kedisiplinan dan baris-berbaris.</p>
+
+            <!-- KARTU VISI -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Visi</div>
+                </div>
+                <p class="visi-text">“Mewujudkan PASKIBRA MAN 2 BANJAR yang tangguh dalam langkah, teguh dalam prinsip, solid dalam kebersamaan, dan tulus dalam pengabdian.”</p>
+            </div>
+
+            <!-- KARTU MISI -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Misi</div>
+                </div>
+                <!-- Menggunakan <ol> agar list menjadi angka otomatis -->
+                <ol class="misi-list">
+                    <li>Membentuk sikap disiplin, tanggung jawab, dalam setiap anggota PASKIBRA MAN 2 BANJAR.</li>
+                    <li>Menumbuhkan jiwa solidaritas, dan rasa kekeluargaan dalam kehidupan organisasi.</li>
+                    <li>Mengembangkan jiwa kepemimpinan, kemandirian, dan keberanian melalui latihan dan kegiatan organisasi.</li>
+                    <li>Meningkatkan kemampuan anggota dalam bidang PBB, upacara, variasi dan formasi, serta keterampilan kepaskibraan lainnya.</li>
+                    <li>Mendorong anggota untuk aktif berprestasi dalam kegiatan dan perlombaan yang membawa nama baik madrasah.</li>
+                    <li>Menanamkan semangat pengabdian kepada madrasah, organisasi, masyarakat, dan bangsa.</li>
+                    <li>Membangun organisasi yang tertib, aktif, kreatif, dan bertanggung jawab melalui program kerja yang terarah dan berkelanjutan.</li>
+                    <li>Menjaga serta mengembangkan nilai dan identitas PASKIBRA MAN 2 BANJAR sebagai Ksatria Indrayana.</li>
+                </ol>
+            </div>
+
+            <!-- SEJARAH PASKIBRA -->
+            <h2 class="section-heading">Sejarah Paskibra</h2>
+            <div class="card">
+                <p class="text-empty">[ Data sejarah Paskibra MAN 2 Banjar belum ditambahkan ]</p>
+            </div>
+
+            <!-- SEJARAH LAMBANG -->
+            <h2 class="section-heading">Sejarah Lambang</h2>
+            <div class="card">
+                
+                <!-- Perbandingan Logo -->
+                <div class="logo-comparison">
+                    <div class="logo-item">
+                        <div class="logo-box">
+                            <img src="logo paskibra lama.png" alt="Logo Lama">
+                        </div>
+                        <span class="logo-label">Lambang Pertama</span>
+                    </div>
+                    
+                    <div class="logo-arrow">➔</div>
+                    
+                    <div class="logo-item">
+                        <div class="logo-box" style="border: 2px solid #2b6cb0;">
+                            <img src="LAMBANG PASKIBRA MAN 2 BANJAR.png" alt="Logo Baru">
+                        </div>
+                        <span class="logo-label">Lambang Saat Ini</span>
+                    </div>
+                </div>
+
+                <!-- Filosofi -->
+                <div class="filosofi-title">Filosofi Lambang</div>
+                <p class="filosofi-text">[ Isi penjelasan dan filosofi dari bentuk, warna, serta elemen-elemen yang ada pada lambang saat ini... ]</p>
+
+                <!-- Informasi Tambahan -->
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <span class="detail-label">Pembuat Lambang</span>
+                        <span class="detail-value">[ TAUFIQURRAHMAN]</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Tanggal Dibuat</span>
+                        <span class="detail-value">[ 03/OKTOBER/2025]</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Diresmikan</span>
+                        <span class="detail-value">[ DD/MM/YYYY ]</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- SCRIPT UNTUK MENU HAMBURGER -->
+    <script>
+        const menuBtn = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                menuBtn.innerHTML = '✕'; 
+            } else {
+                menuBtn.innerHTML = '☰'; 
+            }
+        });
+    </script>
+</body>
+</html>
+
